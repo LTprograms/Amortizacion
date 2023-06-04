@@ -13,7 +13,7 @@ export default function LastRow({obj}) {
             <td className="px-4 py-2 border-b border-gray-200">{Number(interest).toFixed(2)}</td>
             <td className="px-4 py-2 border-b border-gray-200">{Number(comision).toFixed(2)}</td>
             <td className="px-4 py-2 border-b border-gray-200">{Number(cuote).toFixed(2)}</td>
-            <td className="px-4 py-2 border-b border-gray-200">{Number(amount).toFixed(2)}</td>
+            <td className="px-4 py-2 border-b border-gray-200">{Math.abs(Number(amount)).toFixed(2)}</td>
         </tr>  
     );
 }

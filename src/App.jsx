@@ -71,6 +71,9 @@ function App() {
     setTotalObj(total);
     setError(false);
   } 
+  useEffect(()=>{
+    setError(false);
+  }, [])
 
   return (
     <div className='lg:flex'>
@@ -128,7 +131,14 @@ function App() {
           className='w-full bg-green-900 hover:bg-green-950 text-white font-black text-xl p-2 cursor-pointer transition-all rounded-md'          
           />
         </form>        
-          {isError && <Error>{msgError}</Error>}
+        {isError && <Error>{msgError}</Error>}
+        <div className='text-center md:hidden lg:block text-white'>
+          <ul>
+            <li>La Torre Romero, Jose Luis</li>
+            <li>Guzmán Romero, Diego Alonso</li>
+            <li>Ladera Arias, Gerardo Daniel</li>
+          </ul>
+        </div>
       </div>
 
       {/** table */}
@@ -153,7 +163,7 @@ function App() {
               }  
               return <></>
             })}
-            {!isError && 
+            {objArray.length>0 && 
             <LastRow obj={totalObj}/>}                               
           </tbody>
         </table>
