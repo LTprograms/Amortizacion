@@ -29,13 +29,13 @@ function App() {
     e.preventDefault();
     if ([amount, date, tea, period, comision, payDay].includes('')) {
       setError(true);
-      setMsgError("LLenar todos los campos");
+      setMsgError("Fill all gaps");
       setObjArray([]);
       return;
     }
     if (Number(payDay)<1 || Number(payDay)>31) {
       setError(true);
-      setMsgError("Dias de pago entre 1 y 31");
+      setMsgError("Pay days must be between 1 to 31");
       setObjArray([]);
       return;
     }
@@ -81,64 +81,57 @@ function App() {
       <div className='bg-blue-500 md:w-full lg:w-1/3 p-5'> 
         {/** titles */}
         <p className='text-white font-black text-3xl text-center'>
-          Tabla de Amortización
+          Amortization Table
         </p>  
         <form action="" className='p-5'
         onSubmit={handleSubmit}>
 
           <Input type="text" id="amount"
-          placeholder="Importe a solicitar"
-          lb="Préstamo" 
+          placeholder="Requested amount"
+          lb="Loan" 
           val={amount}
           setter={setAmount}
           />
 
           <Input type="date" id="date"
-          lb="Fecha" 
+          lb="Date" 
           val={date}
           setter={setDate}
           />
           
           <Input type="text" id="rate"
-          lb="TEA" 
-          placeholder="Tasa Efectiva Anual"
+          lb="EAR" 
+          placeholder="Effective Anual Rate"
           val={tea}
           setter={setTea}
           />
 
           <Input type="text" id="period"
-          lb="Periodo" 
-          placeholder="Duración total en meses"
+          lb="Period" 
+          placeholder="Total duration of the mounth"
           val={period}
           setter={setPeriod}
           />
 
           <Input type="text" id="comision"
-          lb="Comisiones" 
-          placeholder="Comisiones"
+          lb="Comissions" 
+          placeholder="Comissions"
           val={comision}
           setter={setComision}
           />
           
           <Input type="text" id="payDay"
-          lb="Día de pago" 
-          placeholder="Días de pago"
+          lb="Pay day" 
+          placeholder="Pay day"
           val={payDay}
           setter={setPayDay}
           />
 
-          <input type="submit" value="Calcular" 
+          <input type="submit" value="Calculate" 
           className='w-full bg-green-900 hover:bg-green-950 text-white font-black text-xl p-2 cursor-pointer transition-all rounded-md'          
           />
         </form>        
         {isError && <Error>{msgError}</Error>}
-        <div className='text-center md:hidden lg:block text-white'>
-          <ul>
-            <li>La Torre Romero, Jose Luis</li>
-            <li>Guzmán Romero, Diego Alonso</li>
-            <li>Ladera Arias, Gerardo Daniel</li>
-          </ul>
-        </div>
       </div>
 
       {/** table */}
@@ -146,14 +139,14 @@ function App() {
         <table className="table-auto w-full border-collapse text-center">
           <thead>
             <tr>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Periodo</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Vencimiento</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Dias</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Amortizacion</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Interés</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Comisiones</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Cuota</th>
-              <th className="px-4 py-2 bg-gray-200 text-gray-700">Saldo</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Period</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Due Date</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Days</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Amortization</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Interest</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Comissions</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Cuote</th>
+              <th className="px-4 py-2 bg-gray-200 text-gray-700">Balance</th>
             </tr>
           </thead>
           <tbody>
