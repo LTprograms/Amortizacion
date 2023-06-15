@@ -4,7 +4,7 @@ import Error from './components/Error';
 import Row from './components/Row';
 import LastRow from './components/LastRow';
 import { getFutureDate, getDaysDifference, getDateFromString } from './helpers/dates';
-import { getTED, getTEM } from "./helpers/calc";
+import { getEDR, getEMR } from "./helpers/calc";
 
 function App() {
   const [amount, setAmount] = useState('');
@@ -55,10 +55,10 @@ function App() {
       aux.date = getFutureDate(i==0 ? auxDate : x[i-1].obj.date, 1);
       aux.days = getDaysDifference(i==0?getDateFromString(date):x[i-1].obj.date, aux.date);
       aux.fsa = getDaysDifference(getDateFromString(date), getFutureDate(auxDate, period));
-      aux.ted = getTED(Number(tea));
-      aux.cuote = (Number(amount))*(Math.pow((1+getTEM(Number(tea))), Number(period))) * (getTEM(Number(tea))) / ((Math.pow((1+getTEM(Number(tea))), Number(period))) - 1) + Number(comision);
+      aux.ted = getEDR(Number(tea));
+      aux.cuote = (Number(amount))*(Math.pow((1+getEMR(Number(tea))), Number(period))) * (getEMR(Number(tea))) / ((Math.pow((1+getEMR(Number(tea))), Number(period))) - 1) + Number(comision);
       aux.amount = i==0?Number(amount):(x[i-1].obj.amount - x[i-1].obj.amortizacion);
-      aux.interest = Number(aux.amount) * getTEM(Number(tea));
+      aux.interest = Number(aux.amount) * getEMR(Number(tea));
       // aux.interest = Number(aux.amount) * (Math.pow((1 + Number(tea)/100), Number(period)/360)-1);
       aux.amortizacion = aux.cuote - aux.interest - Number(comision);
       total.amortizacion += aux.amortizacion;
