@@ -1,4 +1,4 @@
-<h1>Amortizacion</h1>
+<h1>Amortization</h1>
 <h2>Tecnologies:</h2>
 <ul>
     <li>ReactJS + Vite</li>
